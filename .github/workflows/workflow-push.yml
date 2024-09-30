@@ -1,0 +1,16 @@
+name: Workflow push
+
+on: push
+
+jobs:
+  onPush:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the application
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
+      - name: Build the application
+        run: npm run build
+      - name: Run tests
+        run: npm run test
