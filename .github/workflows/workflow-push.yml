@@ -3,7 +3,7 @@ name: Workflow push
 on: push
 
 jobs:
-  onPush:
+  firstJob:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the application
@@ -14,3 +14,10 @@ jobs:
         run: npm run build
       - name: Run tests
         run: npm run test
+
+  secondJob:
+    needs: firstJob
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo un truc
+        run: echo "un truc"
